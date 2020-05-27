@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "label": "TO_DO",
+    "text": "задача 1",
+    "priority": 1,
+    "createDate": "may 28, 2020 16:24:00"
+  },
+  {
+    "id": 2,
+    "label": "IN_PROGRESS",
+    "text": "задача 2",
+    "priority": 3,
+    "createDate": "may 27, 2020 16:24:00"
+  },
+  {
+    "id": 3,
+    "label": "DONE",
+    "text": "задача 3",
+    "priority": 2,
+    "createDate": "may 29, 2020 16:24:00"
+  },
+  {
+    "id": 4,
+    "label": "IN_PROGRESS",
+    "text": "задача 4",
+    "priority": 1,
+    "createDate": "may 27, 2020 16:24:00"
+  },
+  {
+    "id": 5,
+    "label": "IN_PROGRESS",
+    "text": "задача 5",
+    "priority": 3,
+    "createDate": "may 28, 2020 16:24:00"
+  },
+  {
+    "id": 6,
+    "label": "DONE",
+    "text": "задача 6",
+    "priority": 1,
+    "createDate": "may 27, 2020 16:24:00"
+  }
+]

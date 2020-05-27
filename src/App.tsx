@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-function App() {
+import Desk from "./components/desk/desk";
+import { AppStateType } from "./redux/store";
+import { CardsDataType } from "./types/types";
+import { getItems, actions } from "./redux/cards-reducer";
+
+type PropsType = {
+  initialized: boolean;
+  cardsData: Array<CardsDataType>;
+  initialize: () => void;
+  sortByAlpha: () => void;
+  sortByDate: () => void;
+  sortByPriority: () => void;
+};
+
+const App = (props: PropsType) => {
+  useEffect(() => {
+    props.initialize();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {props.initialized ? (
+        <Desk
+          cardsData={props.cardsData}
+          sortByAlpha={props.sortByAlpha}
+          sortByDate={props.sortByDate}
+          sortByPriority={props.sortByPriority}
+        />
+      ) : (
+        <h1>loading...</h1>
+      )}
     </div>
   );
-}
+};
 
-export default App;
+const mapStateToProps = (state: AppStateType) => ({
+  initialized: state.cards.isDataLoaded,
+  cardsData: state.cards.cardsData,
+});
+
+export default connect(mapStateToProps, {
+  initialize: getItems,
+  sortByAlpha: actions.sortByAlpha,
+  sortByDate: actions.sortByDate,
+  sortByPriority: actions.sortByPriority,
+})(App);
